@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "14304ba4-d631-4042-9a4e-4787406a5b79",
+		"name": "Nomada Reto API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[POST] Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"demo@usuario.com\",\n    \"password\": \"pipjY7-guknaq-nancex\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3500/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Recibe un objeto \n{\n    \"email\": \"correo@email.com\",\n    \"password\": \"contraseña\"\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3500/me",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] GET Links",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://hipertextual.com/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3500/get-links",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"get-links"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
