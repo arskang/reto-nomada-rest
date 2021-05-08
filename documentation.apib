@@ -1,0 +1,102 @@
+# Documentación API
+
+## Login [/login]
+
++ Body
+
+        {
+            "email": "usuario@email.com",
+            "pasword": "123456789"
+        }
+
++ Attributes (object)
+    + ok: true (boolean)
+    + message: "Mensaje" (string)
+    + token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E" (string)
+
+### Iniciar sesión [POST]
+
++ Request 
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json;charset=UTF-8)
+
+    + Attributes(Login)
+
++ Response 401 (application/json;charset=UTF-8)
+
+        {
+            "ok": false,
+            "message": "No se encontró al usuario"
+        }
+
+## Usuario [/me]
+
++ Attributes (object)
+    + id: "" (string)
+    + email: "usuario@email.com" (string)
+    + name: "Usuario" (string)
+    + active: true (boolean)
+
+### Obtener la información del usuario [GET]
+
++ Request 
+
+    + Headers
+
+            Accept: application/json
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E
+
++ Response 200 (application/json;charset=UTF-8)
+
+    + Attributes(Usuario)
+
++ Response 401 (application/json;charset=UTF-8)
+
+        {
+            "ok": false,
+            "message": "El token no es correcto o ya ha caducado"
+        }
+
++ Response 404 (application/json;charset=UTF-8)
+
+        {
+            "ok": false,
+            "message": "Ocurrió algún error inesperado"
+        }
+
+## Links [/get-links]
+
++ Body
+
+        {
+            "url": "https://google.com"
+        }
+
+### Obtener XLSX con enlaces [POST]
+
++ Request 
+
+    + Headers
+
+            Accept: application/json
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E
+
++ Response 200 (application/vnd.ms-excel)
+
++ Response 401 (application/json;charset=UTF-8)
+
+        {
+            "ok": false,
+            "message": "El token no es correcto o ya ha caducado"
+        }
+
++ Response 404 (application/json;charset=UTF-8)
+
+        {
+            "ok": false,
+            "message": "Ocurrió algún error inesperado"
+        }
