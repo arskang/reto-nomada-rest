@@ -12,7 +12,7 @@ links.post('/get-links', getDecodedToken, async (req, res) => {
         const response = await LinksService.getLinks({ url });
         res.writeHead(200, {
             'Content-Type': 'application/vnd.ms-excel',
-            'Content-disposition': 'attachment;filename=' + `${url.replace(rgxCleanUrl, "")}.xlsx`,
+            'Content-disposition': 'attachment;filename=' + `${url.replace(rgxCleanUrl, "").substring(0, 10)}.xlsx`,
         });
         res.end(response);
     } catch(error) {
