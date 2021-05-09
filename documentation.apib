@@ -1,5 +1,7 @@
 # Documentación API
 
+# Group Login
+
 ## Login [/login]
 
 + Body
@@ -12,7 +14,7 @@
 + Attributes (object)
     + ok: true (boolean)
     + message: "Mensaje" (string)
-    + token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E" (string)
+    + token: "token" (string)
 
 ### Iniciar sesión [POST]
 
@@ -30,8 +32,10 @@
 
         {
             "ok": false,
-            "message": "No se encontró al usuario"
+            "message": "Mensaje con la descripción del error"
         }
+
+# Group Usuario
 
 ## Usuario [/me]
 
@@ -48,7 +52,7 @@
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E
+            Authorization: Bearer < Aquí se manda el token, sin los <> >
 
 + Response 200 (application/json;charset=UTF-8)
 
@@ -58,15 +62,17 @@
 
         {
             "ok": false,
-            "message": "El token no es correcto o ya ha caducado"
+            "message": "Mensaje informando si el token no es correcto o ya ha caducado"
         }
 
 + Response 404 (application/json;charset=UTF-8)
 
         {
             "ok": false,
-            "message": "Ocurrió algún error inesperado"
+            "message": "Mensaje con la descripción del error"
         }
+
+# Group Links
 
 ## Links [/get-links]
 
@@ -83,7 +89,7 @@
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbW9AdXN1YXJpby5jb20iLCJpYXQiOjE2MjA0OTA3MDZ9.ngBlQsRvskRbmPReRvivAZmAChQOUK3K7h04Q0GxA8E
+            Authorization: Bearer < Aquí se manda el token, sin los <> >
 
 + Response 200 (application/vnd.ms-excel)
 
@@ -91,12 +97,12 @@
 
         {
             "ok": false,
-            "message": "El token no es correcto o ya ha caducado"
+            "message": "Mensaje informando si el token no es correcto o ya ha caducado"
         }
 
 + Response 404 (application/json;charset=UTF-8)
 
         {
             "ok": false,
-            "message": "Ocurrió algún error inesperado"
+            "message": "Mensaje con la descripción del error"
         }

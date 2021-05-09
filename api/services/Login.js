@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const UsuarioService = require("./Usuario");
 const { setResponseHelper, getMessageRest } = require("../helpers");
+const { rgxEmail } = require("../helpers/regexp")
 
 class LoginService {
 
     static getLogin ({ email, password, ...rest }) {
-        if (!email || email.trim() === "") throw new Error("Lamentablemente no obtuvimos la información del email");
+        if (!rgxEmail.test(email)) throw new Error("Lamentablemente no obtuvimos la información del email o no tiene un formato correcto");
         if (!password || password.trim() === "") throw new Error("Lamentablemente no obtuvimos la la información de la contraseña");
         
         const restMessage = getMessageRest(rest, "el email y password");
